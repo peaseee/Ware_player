@@ -1,0 +1,104 @@
+{
+  "name": "ware",
+  "version": "42.3.1",
+  "main": "main.js",
+  "bin": {
+    "ware": "./cli.js"
+  },
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "dist": "electron-builder",
+    "release": "npm version patch && git push --follow-tags",
+    "release:minor": "npm version minor && git push --follow-tags",
+    "release:major": "npm version major && git push --follow-tags"
+  },
+  "keywords": [],
+  "author": "pease",
+  "license": "MIT",
+  "description": "Ware - desktop audio player for YouTube, SoundCloud and local files.",
+  "devDependencies": {
+    "electron": "^41.7.1",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "cfonts": "^3.3.1",
+    "discord-rpc": "^4.0.1",
+    "electron-updater": "^6.8.9",
+    "hls.js": "^1.7.1",
+    "tone": "^15.1.22"
+  },
+  "productName": "Ware",
+  "build": {
+    "appId": "com.ware.player",
+    "productName": "Ware",
+    "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "asar": false,
+    "files": [
+      "**/*",
+      "!.github/**",
+      "!dist/**",
+      "!*.md",
+      "!rebrand.js",
+      "!strip-tools-ui.js",
+      "!fetch-binaries.js",
+      "!strip_comments.js",
+      "!package-lock.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": false
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "AudioVideo"
+    },
+    "mac": {
+      "category": "public.app-category.music",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "identity": null,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "artifactName": "${productName}-${version}-mac-${arch}.${ext}"
+    }
+  }
+}

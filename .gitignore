@@ -1,0 +1,20 @@
+# Зависимости и сборка
+node_modules/
+dist/
+
+# Большие бинарники: они лежат в backup/<версия>/bin и в самом установщике.
+# Если нужен полный клон, скопируй папку bin вручную.
+bin/yt-dlp
+bin/yt-dlp.exe
+bin/ffmpeg
+bin/ffmpeg.exe
+bin/ffprobe
+bin/ffprobe.exe
+
+# Служебное
+*.log
+.DS_Store
+.env
+dev-app-update.yml
+library.json.bak
+library.json.tmp
